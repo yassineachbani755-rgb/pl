@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smart Bag Organizer</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== Base ===== */
+body {
+    margin: 0;
+    font-family: 'Roboto Slab', serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* ===== Header ===== */
+header {
+    background-color: #000000; /* noir */
+    text-align: center;
+    padding: 50px 20px;
+    color: white;
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.1),
+        rgba(255,255,255,0.1) 10px,
+        transparent 10px,
+        transparent 20px
+    );
+}
+header h1 {
+    font-size: 36px;
+    margin: 0;
+    font-weight: bold; /* titre en gras */
+}
+header .slogan {
+    font-size: 20px;
+    font-style: italic;
+    margin-top: 10px;
+    font-weight: bold; /* slogan en gras */
+}
+
+/* ===== Navigation ===== */
+nav {
+    text-align: center;
+    padding: 15px;
+    background-color: #ffffff;
+    border-bottom: 2px solid #ccc;
+}
+nav a {
+    color: #333;
+    text-decoration: none;
+    margin: 25px;
+    font-size: 16px;
+    font-weight: bold; /* liens en gras */
+}
+nav a:hover {
+    color: #ff4da6;
+}
+
+/* ===== Hero banner ===== */
+.hero {
+    background: linear-gradient(135deg, #a64dff, #ff66cc);
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+.hero h2 {
+    font-size: 42px;
+    margin-bottom: 15px;
+    font-weight: bold; /* titre hero en gras */
+}
+.hero p {
+    font-size: 20px;
+}
+.hero button {
+    background-color: #ffe066;
+    color: #222;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.hero button:hover {
+    background-color: #ffd633;
+}
+
+/* ===== About ===== */
+#about {
+    text-align: center;
+    padding: 70px 20px;
+    background-color: #ffb3b3; /* rose clair */
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.1),
+        rgba(255,255,255,0.1) 15px,
+        transparent 15px,
+        transparent 30px
+    );
+}
+#about h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: bold; /* titre section en gras */
+}
+#about p {
+    font-weight: bold; /* texte important en gras */
+}
+
+/* ===== Products ===== */
+.product-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 50px 20px;
+}
+
+/* Style général des produits */
+.product {
+    width: 260px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    font-weight: bold;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Images avec overlay */
+.product-img {
+    width: 100%;
+    height: 250px;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Emoji overlay */
+.product-img .overlay {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 32px;
+}
+
+/* Black product */
+.product.black {
+    background-color: #222;
+    color: gold;
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,0,0.05),
+        rgba(255,255,0,0.05) 20px,
+        transparent 20px,
+        transparent 40px
+    );
+}
+
+/* Pink product */
+.product.pink {
+    background-color: #ff66b3;
+    color: #4d004d;
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.1),
+        rgba(255,255,255,0.1) 15px,
+        transparent 15px,
+        transparent 30px
+    );
+}
+
+/* Gray product */
+.product.gray {
+    background-color: #d9d9d9;
+    color: #222;
+    background-image: repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.15),
+        rgba(255,255,255,0.15) 10px,
+        transparent 10px,
+        transparent 20px
+    );
+}
+
+/* Buttons */
+.product button {
+    margin-top: 12px;
+    background-color: inherit;
+    color: inherit;
+    border: 2px solid white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.product.black button:hover {
+    background-color: #444;
+}
+.product.pink button:hover {
+    background-color: #ff99cc;
+}
+.product.gray button:hover {
+    background-color: #aaa;
+}
+
+/* ===== Contact ===== */
+#contact {
+    text-align: center;
+    padding: 70px 20px;
+    background-color: #cc99ff; /* violet clair */
+}
+#contact h2 {
+    font-weight: bold; /* titre contact en gras */
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    margin: auto;
+}
+input, textarea {
+    margin: 10px 0;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+form button {
+    margin-top: 15px;
+    background-color: #222;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    font-weight: bold;
+}
+form button:hover {
+    background-color: #444;
+}
+
+/* ===== Footer ===== */
+footer {
+    background-color: #9933ff; /* violet foncé */
+    color: white;
+    text-align: center;
+    padding: 25px;
+    font-size: 16px;
+    font-weight: bold; /* footer en gras */
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Handmade Accessories & Smart Bag Organizer</h1>
+    <p class="slogan">Organize Your Life Easily</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="home" class="hero">
+    <h2>Smart Organization for Everyone</h2>
+    <p>Discover our innovative bag organizers designed to simplify your daily life.</p>
+    <button>Shop Now</button>
+</section>
+
+<section id="about">
+    <h2>About Us</h2>
+    <p>We are a creative company specialized in handmade smart bag organizers. 
+       Our mission is to help students, workers, and travelers keep their items organized.</p>
+</section>
+
+<section id="products">
+    <h2>Our Products</h2>
+    <div class="product-container">
+        <!-- Black Organizer -->
+        <div class="product black">
+            <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1606813903057-df267bff95b1?auto=format&fit=crop&w=250&q=80');">
+                <div class="overlay">🐱</div>
+            </div>
+            <h3>Black Organizer</h3>
+            <p>$25</p>
+            <button>Add to Cart</button>
+        </div>
+
+        <!-- Pink Organizer -->
+        <div class="product pink">
+            <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1614289399250-57e1c867d03b?auto=format&fit=crop&w=250&q=80');">
+                <div class="overlay">🦋</div>
+            </div>
+            <h3>Pink Organizer</h3>
+            <p>$30</p>
+            <button>Add to Cart</button>
+        </div>
+
+        <!-- Gray Organizer -->
+        <div class="product gray">
+            <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1581090700227-0f25e3f40e40?auto=format&fit=crop&w=250&q=80');">
+                <div class="overlay">✨</div>
+            </div>
+            <h3>Gray Organizer</h3>
+            <p>$28</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <form>
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <textarea placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 Smart Bag Organizer | All rights reserved</p>
+</footer>
+
+</body>
+</html>
